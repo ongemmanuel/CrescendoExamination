@@ -37,7 +37,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatRadioModule,
     MatSnackBarModule,
     MatMenuModule
-
   ],
   exports: [
     MatExpansionModule,

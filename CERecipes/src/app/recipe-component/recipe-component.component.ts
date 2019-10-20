@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FetchDataService } from '../fetch-data.service';
 import { Recipe } from '../interface/recipe';
 import { Special } from '../interface/special';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-component',
@@ -18,7 +19,9 @@ export class RecipeComponent implements OnInit {
   vals: string;
   constructor(
     private fetchData: FetchDataService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const recipeId = this.activatedRoute.snapshot.url[1].path;
@@ -32,11 +35,15 @@ export class RecipeComponent implements OnInit {
 
     this.fetchData.getRecipeList().subscribe(resp => {
       this.selectedRecipe = this.getRecipeData(resp, recipeId);
-      this.isLoaded = true;
-      console.log(this.selectedRecipe);
+      if (this.selectedRecipe) {
+        this.isLoaded = true;
+      } else {
+        this.router.navigate(["**"]);
+      }
+
     },
       error => {
-
+        this.router.navigate(["**"]);
       });
 
   }

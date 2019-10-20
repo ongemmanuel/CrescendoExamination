@@ -8,12 +8,14 @@ import { AppMaterialModule } from './app-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeComponent } from './recipe-component/recipe-component.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeComponent,
     RecipeListComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

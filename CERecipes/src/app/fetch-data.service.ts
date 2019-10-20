@@ -10,8 +10,11 @@ import { Special } from './interface/special';
 })
 
 export class FetchDataService {
-  recipesUrl: string = 'http://localhost:3001/recipes';
-  specialsUrl: string = 'http://localhost:3001/recipes';
+  origin: string = 'http://localhost:3001'
+  recipesUrl: string = this.origin + '/recipes';
+  specialsUrl: string = this.origin + '/specials';
+  // recipesUrl: string = '/recipes';
+  // specialsUrl: string = '/specials';
 
   constructor(
     private http: HttpClient

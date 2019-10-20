@@ -1,0 +1,14 @@
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+    <ng-container *ngFor="let recipe of recipeList">
+        <mat-card (click)="proceedToRecipe(recipe)">
+            <img mat-card-image src="http://localhost:3001/{{recipe.images.medium}}" alt="">
+            <div class="middle">
+                <div class="middleText">Proceed to recipe</div>
+            </div>
+            <mat-card-content>
+                <mat-card-title>{{recipe.title}}</mat-card-title>
+                <span class="subs">{{recipe.description}}</span>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</div>

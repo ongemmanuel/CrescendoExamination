@@ -1,0 +1,25 @@
+.holder{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content-holder{
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+mat-toolbar{
+    background-color: brown;
+    color: white;
+}
+
+p{
+    outline: none;
+    cursor: pointer;
+}
+
+
+

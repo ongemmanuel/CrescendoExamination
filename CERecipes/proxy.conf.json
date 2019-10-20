@@ -1,0 +1,14 @@
+{
+    "/recipes": {
+        "target": "http://localhost:3001",
+        "secure": false
+    },
+    "/specials": {
+        "target": "http://localhost:3001",
+        "secure": false
+    },
+    "/img": {
+        "target": "http://localhost:3001",
+        "secure": false
+    }
+}

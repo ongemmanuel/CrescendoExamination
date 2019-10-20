@@ -1,0 +1,61 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="card" *ngIf="isLoaded">
+        <mat-card-header>
+            <mat-card-title>
+                <h1>{{selectedRecipe.title}}</h1>
+            </mat-card-title>
+            <mat-card-subtitle>{{selectedRecipe.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="http://localhost:3001/{{selectedRecipe.images.full}}">
+        <mat-card-content>
+
+            <mat-card class="card-ing-des">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Ingredients</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list>
+                        <div fxLayout="row wrap" fxLayoutAlign="start start">
+                            <ng-container *ngFor="let ingredient of selectedRecipe.ingredients">
+                                <mat-list-item>
+                                    <h4 mat-line>{{ingredient.amount}} {{ingredient.measurement}} {{ingredient.name}}
+                                    </h4>
+                                    <span mat-line *ngIf="checkSpecial(ingredient.uuid)" [innerHTML]="msg" (click)="goToSpecial()"></span>
+                                </mat-list-item>
+                            </ng-container>
+                        </div>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="card-ing-des">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>Directions</h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list>
+                        <ng-container *ngFor="let direction of selectedRecipe.directions; let i = index">
+                            <mat-list-item class="desc">
+                                <mat-icon>
+                                    arrow_right
+                                </mat-icon>{{direction.instructions}}
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+
+
+        </mat-card-content>
+    </mat-card>
+
+
+
+
+
+
+</div>

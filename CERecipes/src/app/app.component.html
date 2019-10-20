@@ -1,7 +1,9 @@
-<mat-toolbar color="accent">
-  Crescendo Recipes
-</mat-toolbar>
+<div class="holder" fxLayout="column" fxLayoutAlign="none">
+ 
+  <mat-toolbar><p [routerLink]="['']">Crescendo Recipes</p></mat-toolbar>
 
+  <div class="content-holder">
+    <router-outlet></router-outlet>
+  </div>
 
-
-<router-outlet></router-outlet>
+</div>

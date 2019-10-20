@@ -1,10 +1,21 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
-    <mat-card class="card" *ngIf="isLoaded">
-        <mat-card-header>
+    <mat-card *ngIf="isLoaded">
+        <mat-card-header fxLayout="column" fxLayoutAlign="start start">
             <mat-card-title>
                 <h1>{{selectedRecipe.title}}</h1>
             </mat-card-title>
-            <mat-card-subtitle>{{selectedRecipe.description}}</mat-card-subtitle>
+            <mat-card-subtitle class="subs">{{selectedRecipe.description}}</mat-card-subtitle>
+            <mat-card-subtitle class="detailsVal"><span class="details">Preparation Time:</span>
+                {{selectedRecipe.prepTime}} minutes</mat-card-subtitle>
+            <mat-card-subtitle class="detailsVal"><span class="details">Cooking Time:</span> {{selectedRecipe.cookTime}}
+                minutes</mat-card-subtitle>
+            <mat-card-subtitle class="detailsVal"><span class="details">Servings:</span> {{selectedRecipe.servings}}
+            </mat-card-subtitle>
+            <mat-card-subtitle class="detailsVal"><span class="details">Date Posted:</span> {{selectedRecipe.postDate}}
+            </mat-card-subtitle>
+            <mat-card-subtitle class="detailsVal"><span class="details">Last Updated:</span> {{selectedRecipe.editDate}}
+            </mat-card-subtitle>
+
         </mat-card-header>
         <img mat-card-image src="http://localhost:3001/{{selectedRecipe.images.full}}">
         <mat-card-content>
@@ -22,7 +33,9 @@
                                 <mat-list-item>
                                     <h4 mat-line>{{ingredient.amount}} {{ingredient.measurement}} {{ingredient.name}}
                                     </h4>
-                                    <span mat-line *ngIf="checkSpecial(ingredient.uuid)" [innerHTML]="msg" (click)="goToSpecial()"></span>
+                                    <span *ngIf="checkSpecial(ingredient.uuid)" mat-line [innerHTML]="msg"
+                                        (click)="goToNewWindow(ingredient.uuid)"></span>
+
                                 </mat-list-item>
                             </ng-container>
                         </div>
@@ -40,9 +53,7 @@
                     <mat-list>
                         <ng-container *ngFor="let direction of selectedRecipe.directions; let i = index">
                             <mat-list-item class="desc">
-                                <mat-icon>
-                                    arrow_right
-                                </mat-icon>{{direction.instructions}}
+                                {{i+1}}. {{direction.instructions}}
                             </mat-list-item>
                         </ng-container>
                     </mat-list>

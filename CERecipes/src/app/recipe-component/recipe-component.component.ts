@@ -8,13 +8,14 @@ import { Special } from '../interface/special';
   selector: 'app-recipe-component',
   templateUrl: './recipe-component.component.html',
   styleUrls: ['./recipe-component.component.css'],
-  // encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Native,
 })
 export class RecipeComponent implements OnInit {
   selectedRecipe: Recipe;
   specials: Special[];
   isLoaded = false;
   msg: string;
+  vals: string;
   constructor(
     private fetchData: FetchDataService,
     private activatedRoute: ActivatedRoute) { }
@@ -46,10 +47,28 @@ export class RecipeComponent implements OnInit {
 
   checkSpecial(ingId) {
     let sp = this.specials.find(special => ingId === special.ingredientId);
-    if(sp !== undefined) {
-      this.msg = '<sub class="material-icons" style="display:inline">star</sub>' + sp.title + ' (' + sp.type + ')' + ': ' + sp.text ;
-      this.msg = sp.title + ' (' + sp.type + ')' + ': ' + sp.text ;
-     }
+    if (sp !== undefined) {
+      if (sp.geo) {
+        this.msg = '<span class="link-span">' + sp.title + ' (' + sp.type + ')' + ': ' + sp.text + '</span>';
+        this.vals = sp.geo;
+      } else {
+        this.msg = '<span>' + sp.title + ' (' + sp.type + ')' + ': ' + sp.text + '</span>';
+      }
+    }
+
     return sp;
   }
+
+  goToNewWindow(ingId) {
+    let sp = this.specials.find(special => ingId === special.ingredientId);
+    if (sp !== undefined) {
+      if (sp.geo) {
+        let url = "https://www.google.com.sa/maps/search/" + sp.geo;
+        window.open(url, '_blank');
+      } else {
+        return null;
+      }
+    }
+  }
+
 }

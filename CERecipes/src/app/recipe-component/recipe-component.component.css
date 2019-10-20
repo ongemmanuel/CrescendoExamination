@@ -2,30 +2,42 @@
     margin:30px;
 }
 
-.card mat-card {
-    border: 1px solid transparent;
-}
-
-.mat-card.card-ing-des{
-    box-shadow: none;
-}
-
-/* .mat-list-item.desc { 
-    height: auto; 
-    margin-bottom: 20px;
-} */
-
-p
+span p
 {
     display:inline;
 }
 
-span{
+span {
     font-style: italic;
     color: brown;
+    font-size: 14px;
+    outline: none;
+}
+
+.link-span{
     cursor: pointer;
 }
 
-span:hover{
+.link-span:hover{
     text-decoration: underline;
 }
+
+
+.details{
+    color: brown;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.detailsVal{
+    color: rgb(78, 78, 78); 
+}
+
+h1, h2, .subs {
+    font-style: italic;
+}
+
+.subs{
+    font-size: 18px;
+}
+

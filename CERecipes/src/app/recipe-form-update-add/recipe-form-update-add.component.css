@@ -1,0 +1,8 @@
+.dialogCont{
+    min-width: 360px;
+    max-height: 100vh;
+}
+
+mat-form-field {
+  width: 100%;
+}

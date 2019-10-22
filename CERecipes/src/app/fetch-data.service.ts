@@ -30,7 +30,13 @@ export class FetchDataService {
     return this.http.get<Special[]>(this.specialsUrl).pipe(
      catchError(this.handleError)
    );
- }
+  }
+
+  submitAdd(val) {
+    return this.http.post(this.recipesUrl, val).pipe(
+     catchError(this.handleError)
+   );
+  }
 
   private handleError(errorVal: HttpErrorResponse) {
     return throwError(errorVal);

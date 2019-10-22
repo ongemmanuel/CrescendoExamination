@@ -1,6 +1,13 @@
 <div class="holder" fxLayout="column" fxLayoutAlign="none">
  
-  <mat-toolbar><p [routerLink]="['']">Crescendo Recipes</p></mat-toolbar>
+  <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+    <p [routerLink]="['']">Crescendo Recipes</p>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="40px">
+        <button type="button" mat-raised-button (click)="openRecipeForm()">Add Recipe</button>
+        <button type="button" mat-raised-button (click)="openSpecialForm()">Add Special</button>
+    </div>
+  
+  </mat-toolbar>
 
   <div class="content-holder">
     <router-outlet></router-outlet>

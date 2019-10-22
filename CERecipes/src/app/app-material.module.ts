@@ -8,7 +8,8 @@ import {
   MatListModule, MatSidenavModule,
   MatCardModule, MatTabsModule,
   MatIconModule, MatTreeModule, MatMenuModule,
-  MatExpansionModule, MatRadioModule, MatSnackBarModule
+  MatExpansionModule, MatRadioModule, MatSnackBarModule,
+
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,7 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   exports: [
     MatExpansionModule,
@@ -59,7 +60,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatInputModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
   ]
 })
 export class AppMaterialModule { }

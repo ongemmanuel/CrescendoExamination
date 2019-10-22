@@ -2,7 +2,7 @@ export interface Recipe {
     uuid: string;
     title: string;
     description: string;
-    images: {
+    images?: {
         full: string;
         medium: string;
         small: string;
@@ -11,7 +11,7 @@ export interface Recipe {
     prepTime: number;
     cookTime: number;
     postDate: Date;
-    editDate: Date;
+    editDate?: Date;
     ingredients: [
         {
             uuid: string;

@@ -24,16 +24,16 @@ export class RecipeFormUpdateAddComponent implements OnInit {
     this.recipeForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      images: this.fb.group({
-        full: [''],
-        medium: [''],
-        small: ['']
-      }),
       servings: ['', Validators.required],
       prepTime: ['', Validators.required],
       cookTime: ['', Validators.required],
       postDate: ['', Validators.required],
       editDate: [''],
+      images: this.fb.group({
+        full: [''],
+        medium: [''],
+        small: ['']
+      }),
       ingredients: this.getIngredientFormArr(),
       directions: this.getDirectionFormArr()
     });
@@ -44,10 +44,10 @@ export class RecipeFormUpdateAddComponent implements OnInit {
   getIngredientFormArr(): FormArray {
     const ingredientArr = this.fb.array([]);
     ingredientArr.push(this.fb.group({
-      uuid: [''],
+      name: ['', Validators.required],
       amount: ['', Validators.required],
       measurement: ['', Validators.required],
-      name: ['', Validators.required],
+      uuid: [''],
     }));
     return ingredientArr;
   }
@@ -72,8 +72,8 @@ export class RecipeFormUpdateAddComponent implements OnInit {
   isFormArray(formType) {
     return formType.value instanceof FormArray;
   }
-  
-  isDate(key){
+
+  isDate(key) {
     return key === 'postDate' || key === 'editDate';
   }
 
@@ -82,7 +82,7 @@ export class RecipeFormUpdateAddComponent implements OnInit {
     return 0;
   }
 
-  saveAdd(val){
+  saveAdd(val) {
     this.fetchService.submitAdd(val).subscribe(resp => {
       console.log(resp);
     });

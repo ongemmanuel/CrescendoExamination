@@ -1,16 +1,16 @@
 <div class="dialogCont" *ngIf="isReady">
     <span matDialogTitle>Add New Recipe</span>
     <form [formGroup]="recipeForm" (ngSubmit)="saveAdd(recipeForm.getRawValue())">
-        <button mat-raised-button type="submit">Submit</button>
+        <h3>Recipe Detail</h3>
         <ng-container *ngFor="let ctrl of recipeForm.controls | keyvalue:returnZero">
-
+            
             <div *ngIf="isFormControl(ctrl)">
                 <mat-form-field floatLabel="always" *ngIf="!isDate(ctrl.key)">
                     <mat-label for="ctrl.key">{{ctrl.key}}</mat-label>
                     <input required matInput formControlName={{ctrl.key}}>
                     <mat-error *ngIf="recipeForm.get(ctrl.key).errors !== null &&
             recipeForm.get(ctrl.key).touched">
-                        Error
+                        {{displayErrorMsg()}}
                     </mat-error>
                 </mat-form-field>
 
@@ -21,7 +21,7 @@
                     <mat-datepicker #dp disabled="false"></mat-datepicker>
                     <mat-error *ngIf="recipeForm.get(ctrl.key).errors !== null &&
                     recipeForm.get(ctrl.key).touched">
-                        Error
+                    {{displayErrorMsg()}}
                     </mat-error>
                 </mat-form-field>
 
@@ -29,18 +29,21 @@
 
             <div *ngIf="isFormArray(ctrl)">
                 <h3>{{ctrl.key}}</h3>
-                <mat-form-field floatLabel="always" [formArrayName]="ctrl.key">
+                <div floatLabel="always" [formArrayName]="ctrl.key">
                     <ng-container *ngFor="let arrControl of recipeForm.get(ctrl.key).controls; let i = index">
                         <div [formGroupName]="i" fxLayout="column" fxLayoutAlign="space-between start">
                             <ng-container *ngFor="let gCtrl of arrControl.controls | keyvalue:returnZero">
                                 <mat-form-field fxFlex floatLabel="always">
                                     <mat-label for="gCtrl.key">{{gCtrl.key}}</mat-label>
-                                    <input matInput [formControlName]="gCtrl.key">
+                                    <input [required]="gCtrl.key !== 'uuid'" matInput [formControlName]="gCtrl.key">
+                                    <!-- <mat-error *ngIf="selectedArray(gCtrl.key).controls[i].errors !== null && 
+                                    compAddFormGroup.get(control.key).controls[i].touched">
+                                  {{getErrorMessage(selectedArray(control.key).controls[i])}}</mat-error> -->
                                 </mat-form-field>
                             </ng-container>
                         </div>
                     </ng-container>
-                </mat-form-field>
+                </div>
             </div>
 
             <div *ngIf="isFormGroup(ctrl)">
@@ -58,6 +61,10 @@
 
 
         </ng-container>
+
+        <div mat-dialog-actions  fxLayout="column" fxLayoutAlign="space-around center">
+            <button [disabled]="recipeForm.invalid" mat-raised-button type="submit">Submit</button>
+         </div>
 
 
     </form>

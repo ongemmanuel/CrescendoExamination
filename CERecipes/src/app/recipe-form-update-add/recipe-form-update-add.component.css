@@ -1,6 +1,6 @@
 .dialogCont{
-    min-width: 360px;
-    max-height: 100vh;
+    min-width: 420px;
+    max-height: 60vh;
 }
 
 mat-form-field {
